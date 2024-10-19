@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inteligencia Artificial</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="css/images/logo1.jpg" type="image/x-icon">
+    
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+</head>
+<body>
+<script>
+        // Bloquear tecla F12 y otras herramientas de desarrollo
+        document.addEventListener('keydown', function(e) {
+            if (
+                e.key === 'F12' || // Bloqueo de F12
+                (e.ctrlKey && e.shiftKey && e.key === 'I') || // Ctrl + Shift + I
+                (e.ctrlKey && e.shiftKey && e.key === 'J') || // Ctrl + Shift + J
+                (e.ctrlKey && e.key === 'U') // Ctrl + U
+            ) {
+                e.preventDefault();
+                alert("Esta acción está deshabilitada.");
+                return false;
+            }
+        });
+
+        // Bloquear clic derecho
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            alert("Clic derecho deshabilitado.");
+        });
+
+        // Detectar si se abren herramientas de desarrollo
+        (function() {
+            const devtools = {
+                open: false,
+                orientation: undefined
+            };
+
+            const threshold = 160;
+
+            const emitEvent = (state) => {
+                window.dispatchEvent(new CustomEvent('devtoolschange', {
+                    detail: {
+                        open: state.open,
+                        orientation: state.orientation
+                    }
+                }));
+            };
+
+            const main = ({ emitEvent, devtools, threshold }) => {
+                const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+                const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+                const orientation = widthThreshold ? 'vertical' : 'horizontal';
+
+                if (
+                    !(heightThreshold && widthThreshold) &&
+                    ((window.Firebug && window.Firebug.chrome && window.Firebug.chrome.isInitialized) ||
+                        widthThreshold || heightThreshold)
+                ) {
+                    if (!devtools.open || devtools.orientation !== orientation) {
+                        emitEvent({
+                            open: true,
+                            orientation
+                        });
+                    }
+                    devtools.open = true;
+                    devtools.orientation = orientation;
+                } else {
+                    if (devtools.open) {
+                        emitEvent({
+                            open: false,
+                            orientation: undefined
+                        });
+                    }
+                    devtools.open = false;
+                    devtools.orientation = undefined;
+                }
+            };
+
+            setInterval(() => main({ emitEvent, devtools, threshold }), 500);
+
+            window.addEventListener('devtoolschange', (e) => {
+                if (e.detail.open) {
+                    alert("Las herramientas de desarrollo están abiertas. Por favor, ciérrelas.");
+                }
+            });
+        })();
+    </script>
+
+    <div class="contenido">
+        <header>
+            <div class="image-container">
+                <img src="css/images/peru.jpg" alt="Logo" class="logo2">
+                <img src="css/images/campus.jpg" alt="Logo" class="logo1">
+                <img src="css/images/sistemas.jpeg" alt="Logo" class="logo">
+            </div>
+            <h1>Inteligencia Artificial</h1>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#Descripción">Descripción</a></li>
+                <li><a href="#Metodología">Metodología</a></li>
+                <li><a href="#Trabajos">Trabajos</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <div class="contenedor">
+                <section class="intro" id="separador">
+                    <img src="css/images/titulooo.png" alt="Universidad Autonoma" style="width: 100%;margin: auto;">
+                    <p>FACULTAD DE INGENIERÍA DE SISTEMAS E INFORMÁTICA</p>
+                    <p>Escuela Académico Profesional de Ingeniería de Sistemas</p>
+                </section>
+   <div id="Descripción"></div>
+                <section class="project-description"  id="separador">
+                                        <h3>1. DESCRIPCIÓN DEL CURSO</h3>
+                    <p>La experiencia curricular de Inteligencia Artificial corresponde al área de estudios específicos, es de naturaleza teórico-práctica y tiene como finalidad desarrollar habilidades para implementar sistemas con inteligencia artificial. Las unidades de aprendizaje incluyen: I. Introducción y técnicas básicas; II. Técnicas avanzadas.</p>
+    
+                    <h3>2. COMPETENCIA DE LA ASIGNATURA</h3>
+                    <p>Interpreta y aplica la inteligencia artificial en la elaboración de sistemas expertos, de acuerdo a las necesidades del mercado, demostrando responsabilidad, originalidad e innovación.</p>
+
+                    <h3>3. RESULTADO DE LA ASIGNATURA</h3>
+                    <p>Al finalizar el curso, el estudiante implementará un sistema inteligente como solución a un problema utilizando métodos y técnicas de Inteligencia Artificial, con responsabilidad, originalidad e innovación.</p>
+                    
+    
+                    <h3>4. OBJETIVO</h3>
+                    <p>Al finalizar el curso, el estudiante implementa un sistema inteligente como alternativa de solución a un
+                        problema utilizando métodos y técnicas de Inteligencia Artificial, con responsabilidad, originalidad e
+                        innovación.</p>
+                <div id="Metodología"></div>
+                <h3>5. METODOLOGÍA</h3>
+                    <p>El curso utilizará la metodología de Aprendizaje Basado en Problemas (ABP), enfocándose en la resolución de situaciones reales del ámbito laboral. Se presentarán desafíos prácticos que el estudiante deberá resolver de manera creativa, con la orientación del docente, consolidando así sus conocimientos conceptuales y técnicos.
+
+                        Durante el curso, se emplearán herramientas digitales como lenguajes de programación, bases de datos, y recursos multimedia, así como plataformas colaborativas, organizadores gráficos y entornos de gamificación. También se utilizarán laboratorios y espacios fuera del aula para reforzar el aprendizaje práctico.
+
+                    Además, el curso contempla la inclusión de estudiantes con discapacidad mediante estrategias de accesibilidad, apoyadas en adaptaciones tecnológicas para eliminar barreras en el acceso a la información. La evaluación será continua, abarcando proyectos aplicados, trabajos en equipo, presentaciones, foros de discusión, y pruebas escritas y orales.</p>
+
+    
+                    <h3>6. EVALUACIÓN</h3>
+           
+                        <p>La evaluación del curso seguirá los lineamientos del Modelo Educativo UA23, centrado en los desempeños del estudiante y valorando su capacidad de resolver situaciones de manera efectiva. El sistema de evaluación comprenderá tanto la evaluación formativa como la evaluación sumativa, distribuidas en tres momentos del curso:</p>
+
+                        <p><strong>EC (Evaluación de Conocimientos - 10%):</strong> Se realizará en la semana 06 y medirá los conocimientos adquiridos por los estudiantes mediante un examen de conocimientos. Esta evaluación tendrá una ponderación del 10% del promedio final.</p>
+
+                        <p><strong>EP (Evaluación del Progreso - 40%):</strong> Se llevará a cabo en la semana 04 y evaluará el avance del resultado de aprendizaje a través de listas de cotejo y rúbricas analíticas. Su ponderación será del 40% del promedio final.</p>
+
+                        <p><strong>EF (Evaluación Final - 50%):</strong> En la semana 08, se comprobará el logro del resultado de aprendizaje también por medio de listas de cotejo y rúbricas analíticas. La ponderación de esta evaluación será del 50% del promedio final.</p>
+
+                        <p>El promedio final se calculará de acuerdo con la siguiente fórmula:</p>
+
+                        <p><code>(EC * 0.10) + (EP * 0.40) + (EF * 0.50)</code></p>
+
+                        <p><strong>Categoría conceptual:</strong> Evaluación de los principales tópicos teóricos desarrollados en el curso.</p>
+
+                        <p><strong>Categoría procedimental:</strong> Evaluación de la aplicación práctica de los conocimientos adquiridos en situaciones reales o simuladas.</p>
+
+                        <p><strong>Categoría actitudinal:</strong> Evaluación del desempeño del estudiante en cuanto a la apropiación de valores institucionales y su comportamiento frente a diversas situaciones.</p>
+
+                        <p>Para aprobar el curso, el estudiante debe obtener una calificación mínima de 10.5 puntos en el promedio final. Por la naturaleza del resultado de aprendizaje, no se aplicará un examen sustitutorio en esta asignatura.</p>
+
+                </section>
+
+                <section class="details"  id="separador">
+                    <h3>Especificaciones Generales</h3>
+                    <p><strong>Nombre del curso:</strong> INTELIGENCIA ARTIFICIAL</p>
+                    <p><strong>Profesor:</strong> Dr. Hugo Froilan Vega Huerta</p>
+                    <!-- Añade aquí el resto de la información -->
+                </section>
+    <!--
+                <section class="methodology"  id="separador">
+                    <h3>Metodología</h3>
+                    <p>El curso se desarrollará en la modalidad de orientación personalizada...</p>
+                </section> -->
+                
+                <section class="content"  id="separador">
+                    <h3>Contenido Analítico por Semanas</h3>
+                <div id="Trabajos"></div>
+                    <table class="courses-table"  style="margin-bottom: 10%;">
+                        <thead>
+                            <tr>
+                                <th>SEM.</th>
+                                <th>TEMA</th>
+                                <th>TRABAJOS</th>
+                                <th>ENTREGA</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Introduccion a la Inteligencia Artificial</td>
+                                <td><a href="https://imaginaproyecta.com/" target="_blank">Trabajo 1</a></td>
+                                <td>07/09/2024</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td> Inteligencia Artificial</td>
+                                <td><a href="https://docs.google.com/document/d/1QaG7ZfrWS1uJ-AQS9V2hBdYkWL6o2Wrj/edit?usp=sharing&ouid=115258580536622318788&rtpof=true&sd=true" target="_blank">Trabajo 2</a></td>
+                                <td>12/09/2024</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    3
+                                </td>
+                                <td> El Agente Inteligente</td>
+                                <td>
+                                    <a href="https://docs.google.com/document/d/1WDllXlz2priA0rfZm0L27--ijrE28AWC/edit?usp=sharing&ouid=115258580536622318788&rtpof=true&sd=true" target="_blank">Trabajo 3</a>
+                                </td>
+                                <td>
+                                    13/09/24
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    4
+                                </td>
+                                <td> Rutas Inteligentes </td>
+                                <td>
+                                    <a href="https://j3susto.github.io/RutasIA/" target="_blank">Trabajo 4</a>
+                                </td>
+                                <td>
+                                    25/09/24
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    5
+                                </td>
+                                <td> El juego del michi </td>
+                                <td>
+                                    <a href="https://j3susto.github.io/JuegoMichi/" target="_blank">Trabajo 5</a>
+                                </td>
+                                <td>
+                                    05/10/24
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    6
+                                </td>
+                                <td> Regresion Lineal </td>
+                                <td>
+                                    <a href="https://j3susto.github.io/Regresion/" target="_blank">Trabajo 6</a>
+                                </td>
+                                <td>
+                                    18/10/24
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+
+            <aside>
+                <section class="professor">
+                    <h3>Profesor del Curso</h3>
+                    <img src="css/images/HUGO VEGA.jpg" alt="Hugo Vega Huerta">
+                    <p>Hugo Vega Huerta</p>
+                </section>
+        
+               <section class="groups">
+                    <h3>Integrantes</h3>
+                    <ul  style="padding: 0 0 0 5%;">
+                        <li>Jesus Tolenino V.</li>
+                        <li>Javier Flores C.</li>
+                        <li>Ana Asto Arotinco</li>
+                        <li>Alexis Velarde B.</li>
+                        <li>Giancarlo Alegria</li>
+                    </ul>
+                </section>
+        
+                <section class="plantation">
+                    <h3>En el Proceso.</h3>
+                    <img src="css/images/entrevista.jpeg" alt="Entrevista a Hospitales">
+                    <p>En el proceso de entrevista para recabar informacion.</p>
+                </section>
+        
+                <section class="external-links">
+                    <h3>Enlaces Externos</h3>
+                    <ul>
+                        <li style="margin-bottom: 2%;"><a href="https://www.autonoma.pe/evaluacion-preferente/?utm_source=pg_goog%20lm_bra7&utm_medium=cpc&utm_campaign=search%20lm_branding7&gad_source=1&gclid=Cj0KCQjw8--2BhCHARIsAF_w1gzgmqtPbQrnrNOmDyWXdffLQigrZBaMCfTcy2D5YAYTIi_XtLNpEaoaAu4AEALw_wcB">UA</a></li>
+                        <li style="margin-bottom: 2%;"><a href="https://cdn.prod.website-files.com/66cf3dcb409b247bdc299526/66d780bd7fcd538e0f9be762_Brochure%20100%25%20virtual%20ingenieria%20de%20sistemas%20-%20Digital.pdf">SISTEMAS</a></li>
+                        <li><a href="https://www.autonoma.pe/servicios-autonoma/centro-de-atencion-al-estudiante/">Atencion al Estudiante</a></li>
+                        <!-- Añade más enlaces según sea necesario -->
+                    </ul>
+                </section>
+        
+                
+        
+                <section class="counter">
+                    <h3>Contador de Visitas</h3>
+                    <p>Visitas: <span id="contador">0</span></p>
+                </section>
+        
+            </aside>
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2024 Proyecto - Universidad Autonoma del Peru</p>
+    </footer>
+</body>
+</html>
